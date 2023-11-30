@@ -3,7 +3,7 @@
 const yargs = require('yargs');
 const path = require('path');
 const { inquirerPrompt } = require("./inquirer");
-const { copyDir } = require("./copy");
+const { checkMkdirExists, copyFile } = require("./copy");
 
 yargs.command(
   ['create', 'c'],
