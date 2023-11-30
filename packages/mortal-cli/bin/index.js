@@ -2,9 +2,7 @@
 
 
 const yargs = require('yargs');
-
-console.log('name', yargs.argv.name);
-
+const { inquirerPrompt } = require('./inquirer')
 
 yargs.command(
     ['create', 'c'],
@@ -12,13 +10,15 @@ yargs.command(
     (yargs) => {
         return yargs.option('name', {
             alias: 'n',
-            demand:true,
+            demand: true,
             describe: '模板名称',
             demandOption: true,
-            type:'string'
+            type: 'string'
         })
     },
     (argv) => {
-        console.log('argv',argv);
+        inquirerPrompt(argv).then(answers => {
+            console.log('answers', answers);
+        })
     }
 ).argv
